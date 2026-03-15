@@ -1,0 +1,103 @@
+# 🛡️ Activity 5: Apply filters to SQL queries
+
+## 🇬🇧 English Version
+
+### 1. Project Description
+As a security professional, I investigated potential security issues related to login attempts and employee machines. My task was to query the organization's database—specifically the log_in_attempts and employees tables—to identify unauthorized access and prepare for security updates. By using SQL filters such as AND, OR, NOT, and LIKE, I successfully retrieved targeted datasets to support the organization's security goals.
+
+### 2. Retrieve after hours failed login attempts
+I queried the log_in_attempts table to identify failed logins occurring after 18:00.
+
+**Query:**
+SELECT * FROM log_in_attempts WHERE login_time > '18:00:00' AND success = FALSE;
+
+*How it works: This query filters for records where the login_time is later than 18:00 and the success column is FALSE (0), indicating a failed attempt.*
+
+### 3. Retrieve login attempts on specific dates
+I reviewed all login attempts that occurred on 2022-05-09 or the day before.
+
+**Query:**
+SELECT * FROM log_in_attempts WHERE login_date = '2022-05-09' OR login_date = '2022-05-08';
+
+*How it works: I used the OR operator to include records from two specific dates in the results.*
+
+### 4. Retrieve login attempts outside of Mexico
+The team determined suspicious activity originated outside Mexico.
+
+**Query:**
+SELECT * FROM log_in_attempts WHERE NOT country LIKE 'MEX%';
+
+*How it works: The NOT operator excludes Mexico, and LIKE 'MEX%' ensures any variation starting with 'MEX' (like MEXICO) is caught.*
+
+### 5. Retrieve employees in Marketing (East Building)
+I identified Marketing employees in the East building for security updates.
+
+**Query:**
+SELECT * FROM employees WHERE department = 'Marketing' AND office LIKE 'East%';
+
+*How it works: This query uses AND to ensure both conditions are met, and the % wildcard captures any office within the East building.*
+
+### 6. Retrieve employees in Finance or Sales
+A security update was required for the Finance and Sales departments.
+
+**Query:**
+SELECT * FROM employees WHERE department = 'Finance' OR department = 'Sales';
+
+*How it works: The OR operator returns employees belonging to either specified department.*
+
+### 7. Retrieve all employees not in IT
+I needed to identify all employees who are not in the IT department.
+
+**Query:**
+SELECT * FROM employees WHERE NOT department = 'Information Technology';
+
+*How it works: The NOT operator filters out the Information Technology department.*
+
+### 8. Summary
+Through these SQL queries, I provided actionable data for the security team. I identified failed after-hours login attempts, tracked suspicious activity across dates and locations, and segmented employee data for targeted security updates. This demonstrates my proficiency in using SQL to manage and secure organizational data effectively.
+
+---
+
+## 🇪🇸 Versión en Español
+
+### 1. Descripción del proyecto
+Como profesional de seguridad, investigué posibles problemas de seguridad relacionados con intentos de inicio de sesión y equipos de empleados. Mi tarea consistió en realizar consultas a la base de datos de la organización —específicamente las tablas log_in_attempts y employees— para identificar accesos no autorizados y preparar actualizaciones de seguridad.
+
+### 2. Obtener intentos de inicio de sesión fallidos fuera de horario
+Consulté la tabla log_in_attempts para identificar inicios fallidos después de las 18:00.
+
+**Consulta:**
+SELECT * FROM log_in_attempts WHERE login_time > '18:00:00' AND success = FALSE;
+
+### 3. Obtener intentos de inicio de sesión en fechas específicas
+Revisé todos los intentos de inicio de sesión del 09-05-2022 y del día anterior.
+
+**Consulta:**
+SELECT * FROM log_in_attempts WHERE login_date = '2022-05-09' OR login_date = '2022-05-08';
+
+### 4. Obtener intentos de inicio de sesión fuera de México
+El equipo determinó que la actividad sospechosa no se originó en México.
+
+**Consulta:**
+SELECT * FROM log_in_attempts WHERE NOT country LIKE 'MEX%';
+
+### 5. Obtener empleados de Marketing (Edificio Este)
+Identifiqué a los empleados de Marketing en el edificio Este para realizar actualizaciones de seguridad.
+
+**Consulta:**
+SELECT * FROM employees WHERE department = 'Marketing' AND office LIKE 'East%';
+
+### 6. Obtener empleados de Finanzas o Ventas
+Se requería una actualización para los departamentos de Ventas y Finanzas.
+
+**Consulta:**
+SELECT * FROM employees WHERE department = 'Finance' OR department = 'Sales';
+
+### 7. Obtener todos los empleados excepto los de IT
+Necesitaba identificar a todos los empleados que no pertenecen al departamento de IT.
+
+**Consulta:**
+SELECT * FROM employees WHERE NOT department = 'Information Technology';
+
+### 8. Resumen
+A través de estas consultas SQL, proporcioné datos procesables para el equipo de seguridad. Identifiqué intentos de inicio de sesión fallidos fuera de horario, rastreé actividad sospechosa por fechas y ubicaciones, y segmenté datos de empleados para actualizaciones de seguridad.

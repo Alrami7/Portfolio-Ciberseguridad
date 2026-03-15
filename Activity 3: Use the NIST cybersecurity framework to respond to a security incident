@@ -1,0 +1,46 @@
+# 🛡️ Activity 3: Incident Report Analysis (NIST CSF)
+
+## 🇬🇧 English Version
+
+### 📝 Overview
+This document contains a cybersecurity incident analysis (DoS Attack) using the **NIST Cybersecurity Framework (CSF)**. This report demonstrates my ability to manage incidents—from threat identification to system recovery—applying an analytical mindset and agile troubleshooting skills.
+
+### 1. Summary
+Our multimedia company suffered a Denial of Service (DoS) attack that compromised the internal network for two hours. Network services became unresponsive due to a flood of incoming ICMP packets. The incident management team responded by blocking ICMP packets, taking non-critical services offline, and restoring critical ones. The investigation revealed the attacker exploited a misconfigured firewall to saturate the network via an ICMP Ping Flood.
+
+### 2. Identify
+* **Attack Type:** Denial of Service (DoS) via ICMP Ping Flood.
+* **Affected Systems:** The entire internal network and associated services.
+* **Exploited Vulnerability:** A misconfigured firewall that allowed unrestricted incoming ICMP traffic without filtering or source verification.
+
+### 3. Protect & 4. Detect
+* **Protect:** Implemented a new firewall rule for ICMP rate limiting and enabled source IP verification (anti-spoofing).
+* **Detect:** Deployed continuous network monitoring software for real-time traffic analysis and implemented an Intrusion Detection/Prevention System (IDS/IPS) configured with specific ICMP threat signatures.
+
+### 5. Respond & 6. Recover
+* **Respond:** Immediate containment by blocking all incoming ICMP traffic at the perimeter. Future incidents will trigger automated subnet isolation and real-time ACL updates.
+* **Recover:** Normal operations were restored by prioritizing critical business services. Post-incident improvements include data corruption checks and intensified network monitoring for 48 hours post-recovery.
+
+---
+
+## 🇪🇸 Versión en Español
+
+### 📝 Resumen del Documento
+Este documento contiene el análisis de un incidente de ciberseguridad (Ataque DoS) utilizando el **Marco de Ciberseguridad del NIST (NIST CSF)**. Este informe demuestra mi capacidad para gestionar incidentes, desde la identificación de la amenaza hasta la recuperación de los sistemas, aplicando una mentalidad analítica y de resolución ágil de problemas (troubleshooting).
+
+### 1. Summary (Resumen)
+Nuestra empresa multimedia sufrió un ataque de Denegación de Servicio (DoS) que comprometió la red interna durante dos horas. Los servicios de red dejaron de responder repentinamente debido a una avalancha (flood) de paquetes ICMP entrantes. El equipo respondió bloqueando los paquetes ICMP, deteniendo temporalmente los servicios no críticos y restableciendo los críticos. La investigación reveló que el atacante saturó la red enviando pings ICMP a través de un cortafuegos mal configurado.
+
+### 2. Identify (Identificar)
+* **Tipo de ataque:** Ataque de Denegación de Servicio (DoS) mediante ICMP Ping Flood.
+* **Sistemas afectados:** La totalidad de la red interna de la organización y los servicios de red asociados.
+* **Vulnerabilidad explotada:** Un cortafuegos (firewall) mal configurado que permitía el paso ilimitado de tráfico ICMP entrante sin filtrado ni verificación de origen.
+
+### 3. Protect (Proteger) & 4. Detect (Detectar)
+* **Proteger:** Se ha configurado una nueva regla en el firewall para limitar la tasa (rate limiting) de paquetes ICMP y se ha habilitado la verificación de IP de origen contra suplantación (anti-spoofing).
+* **Detectar:** Despliegue de software de monitorización de red en tiempo real e implementación de un Sistema de Detección y Prevención de Intrusiones (IDS/IPS) diseñado para filtrar tráfico ICMP sospechoso.
+
+### 5. Respond (Responder) & 6. Recover (Recuperar)
+* **Responder:** Contención inmediata bloqueando el tráfico ICMP en el perímetro. Para futuros incidentes se automatizará el aislamiento de subredes y la actualización de listas de control de acceso (ACL).
+
+* **Recuperar:** El servicio se restableció priorizando los sistemas críticos. Como mejora, se implementará un protocolo de verificación de integridad de datos y monitorización intensificada durante 48 horas post-incidente.
