@@ -1,0 +1,97 @@
+# 🛡️ Activity 4: File Permissions in Linux
+
+## 🇬🇧 English Version
+
+### 1. Project Description
+In this project, I acted as a security professional managing authorization for a research team. My objective was to examine existing file and directory permissions within the `/home/researcher2/projects` directory and update them to align with the organization's authorization policies. This practical scenario required using Linux commands to enforce the Principle of Least Privilege, securing regular files, hidden archives, and private directories.
+
+### 2. Check file and directory details
+To check the current permissions of all files and directories, including hidden ones, I used the `ls` command with the `-la` options. The `-l` flag displays the output in a long list format, and the `-a` flag ensures that hidden files (those starting with a dot) are also displayed.
+
+```bash
+researcher2@ubuntu:~/projects$ ls -la
+```
+
+*Based on the output, the directory contains files like `project_k.txt`, `project_m.txt`, `project_r.txt`, `project_t.txt`, the hidden file `.project_x.txt`, and a subdirectory named `drafts`*.
+
+### 3. Describe the permissions string
+Using `project_k.txt` as an example, the `ls -la` command outputs the 10-character string `-rw-rw-rw-` because the User, Group, and Other all have read and write permissions. 
+* The **1st character** indicates the file type (`-` for regular file, `d` for directory). 
+* The next nine characters are grouped into three sets of three: 
+  * **2nd-4th (`rw-`)**: User/Owner permissions.
+  * **5th-7th (`rw-`)**: Group permissions.
+  * **8th-10th (`rw-`)**: Other users' permissions.
+* In these sets, `r` stands for read, `w` stands for write, and `x` stands for execute. A hyphen `-` means the permission is not granted.
+
+### 4. Change file permissions
+The organization's policy states that "other" users should not have write access to any files. Based on the previous check, I identified that the file `project_k.txt` had unauthorized write permissions for others. To remove this access, I used the `chmod` command with the symbolic mode `o-w` (others minus write).
+
+```bash
+researcher2@ubuntu:~/projects$ chmod o-w project_k.txt
+```
+
+### 5. Change file permissions on a hidden file
+The research team archived a hidden file named `.project_x.txt`. Currently, the User has read/write, the Group has write, and Other has none. According to the policy, this file should not have write permissions for anyone, but the user and group should retain read access. I used `chmod` to remove write permissions for all (`a-w`) and add read permissions to the group (`g+r`).
+
+```bash
+researcher2@ubuntu:~/projects$ chmod a-w,g+r .project_x.txt
+```
+
+### 6. Change directory permissions
+The subdirectory `drafts` belongs to `researcher2`, and only this user should have access to it. Currently, the Group has execute permissions (`--x`). To enforce strict access, I used the `chmod` command to remove execute permissions from the group (`g-x`).
+
+```bash
+researcher2@ubuntu:~/projects$ chmod g-x drafts
+```
+
+### 7. Summary
+Through this activity, I successfully audited and modified Linux file system permissions to secure a research team's project directory. By utilizing commands like `ls -la` and `chmod`, I identified unauthorized access levels on files like `project_k.txt` and restricted them according to strict organizational policies. This practical application ensures data confidentiality and integrity by enforcing the Principle of Least Privilege across the filesystem.
+
+---
+
+## 🇪🇸 Versión en Español
+
+### 1. Descripción del proyecto
+En este proyecto, actué como un profesional de seguridad gestionando la autorización para un equipo de investigación. Mi objetivo fue examinar los permisos existentes de archivos y directorios en el directorio `/home/researcher2/projects` y actualizarlos para alinearlos con las políticas de autorización de la organización. Este escenario práctico requirió el uso de comandos de Linux para aplicar el Principio de Mínimo Privilegio, asegurando archivos regulares, archivos ocultos y directorios privados.
+
+### 2. Comprobar los detalles de archivos y directorios
+Para comprobar los permisos actuales de todos los archivos y directorios, incluidos los ocultos, utilicé el comando `ls` con las opciones `-la`. El parámetro `-l` muestra la salida en formato de lista larga, y el parámetro `-a` asegura que también se muestren los archivos ocultos (los que empiezan por un punto).
+
+```bash
+researcher2@ubuntu:~/projects$ ls -la
+```
+
+*Basado en la salida, el directorio contiene archivos como `project_k.txt`, `project_m.txt`, `project_r.txt`, `project_t.txt`, el archivo oculto `.project_x.txt` y un subdirectorio llamado `drafts`*.
+
+### 3. Describa la cadena de permisos
+Tomando `project_k.txt` como ejemplo, el comando `ls -la` genera la cadena de 10 caracteres `-rw-rw-rw-` ya que el Usuario, Grupo y Otros tienen permisos de lectura y escritura. 
+* El **1º carácter** indica el tipo de archivo (`-` para archivo normal, `d` para directorio). 
+* Los siguientes nueve caracteres se agrupan en tres bloques de tres: 
+  * **2º-4º (`rw-`)**: Permisos del Usuario/Propietario.
+  * **5º-7º (`rw-`)**: Permisos del Grupo.
+  * **8º-10º (`rw-`)**: Permisos para Otros usuarios.
+* En estos bloques, `r` significa lectura (read), `w` escritura (write) y `x` ejecución (execute). Un guion `-` significa que el permiso no está concedido.
+
+### 4. Cambiar permisos de archivo
+La política de la organización establece que "otros" usuarios no deben tener acceso de escritura a ningún archivo. Basándome en la comprobación anterior, identifiqué que el archivo `project_k.txt` tenía permisos de escritura no autorizados para otros. Para eliminar este acceso, utilicé el comando `chmod` con el modo simbólico `o-w` (otros menos escritura).
+
+```bash
+researcher2@ubuntu:~/projects$ chmod o-w project_k.txt
+```
+
+### 5. Cambiar permisos de archivo en un archivo oculto
+El equipo de investigación archivó un documento oculto llamado `.project_x.txt`. Actualmente, el Usuario tiene lectura/escritura, el Grupo tiene escritura y Otros no tienen accesos. Según la política, este archivo no debe tener permisos de escritura para nadie, pero el usuario y el grupo deben conservar el acceso de lectura. Utilicé `chmod` para eliminar los permisos de escritura a todos (`a-w`) y añadir permisos de lectura al grupo (`g+r`).
+
+```bash
+researcher2@ubuntu:~/projects$ chmod a-w,g+r .project_x.txt
+```
+
+### 6. Cambiar permisos de directorio
+El subdirectorio `drafts` pertenece a `researcher2`, y solo este usuario debe tener acceso a él. Actualmente, el Grupo tiene permisos de ejecución (`--x`). Para aplicar un acceso estricto, utilicé el comando `chmod` para eliminar el permiso de ejecución del grupo (`g-x`).
+
+```bash
+researcher2@ubuntu:~/projects$ chmod g-x drafts
+```
+
+### 7. Resumen
+A través de esta actividad, audité y modifiqué con éxito los permisos del sistema de archivos Linux para asegurar el directorio de un equipo de investigación. Utilizando comandos como `ls -la` y `chmod`, identifiqué niveles de acceso no autorizados en archivos como `project_k.txt` y los restringí según las estrictas políticas de la organización. Esta aplicación práctica garantiza la confidencialidad y la integridad de los datos al imponer el Principio de Mínimo Privilegio.
