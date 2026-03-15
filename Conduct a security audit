@@ -1,76 +1,58 @@
 # 🛡️ Activity 2: Security Audit Report - Botium Toys
 
-## 📝 Executive Summary
-This report contains a comprehensive security audit of **Botium Toys**. The goal was to assess the organization's existing assets, controls, and compliance posture against industry standards and regulations (PCI DSS, GDPR, and SOC). 
+## 🇬🇧 English Version
 
-As a result of this audit, a **risk score of 8/10** was assigned due to significant gaps in technical and administrative controls, particularly concerning data encryption, access management, and disaster recovery.
+### 📝 Executive Summary
+This report contains a comprehensive security audit of **Botium Toys**. The goal was to assess the organization's existing assets, controls, and compliance posture against industry standards and regulations (PCI DSS, GDPR, and SOC). As a result of this audit, a **risk score of 8/10** was assigned due to significant gaps in technical and administrative controls, particularly concerning data encryption, access management, and disaster recovery.
 
----
-
-## 🔍 Audit Scope & Goals
+### 🔍 Audit Scope & Goals
 * **Scope:** Entire security program, including employee equipment, internal networks, on-premises systems, and the adjoining warehouse.
-* **Goals:** * Assess existing assets.
-    * Complete a controls and compliance checklist.
-    * Identify necessary implementations to improve the overall security posture.
+* **Goals:** Assess existing assets, complete a controls and compliance checklist, and identify necessary implementations to improve the overall security posture.
 
----
-
-## 📊 Controls Assessment Checklist
-Based on the audit, here is the current status of cybersecurity controls at Botium Toys:
-
+### 📊 Controls Assessment Checklist
 | Control | In Place? | Category | Type |
 | :--- | :---: | :--- | :--- |
 | **Least Privilege** | No | Administrative | Preventative |
 | **Disaster Recovery Plans** | No | Administrative | Corrective |
 | **Password Policies** | Yes* | Administrative | Preventative |
-| **Separation of Duties** | No | Administrative | Preventative |
-| **Firewall** | **Yes** | Technical | Preventative |
+| **Firewall & Antivirus** | **Yes** | Technical | Preventative |
 | **Intrusion Detection System (IDS)** | No | Technical | Detective |
-| **Backups** | No | Technical | Corrective |
-| **Antivirus Software** | **Yes** | Technical | Preventative |
-| **Legacy System Maintenance** | **Yes** | Technical | Preventative |
-| **Encryption** | No | Technical | Deterrent |
-| **Password Management System** | No | Technical | Preventative |
-| **Locks (Physical)** | **Yes** | Physical | Preventative |
-| **CCTV Surveillance** | **Yes** | Physical | Detective |
-| **Fire Detection & Prevention** | **Yes** | Physical | Detective |
+| **Backups & Encryption** | No | Technical | Corrective/Deterrent |
+| **Physical Security (Locks, CCTV, Fire)** | **Yes** | Physical | Preventative/Detective |
+*\*Note: Existing password policy is weak and non-compliant with modern standards.*
 
-*\*Note: Although a password policy exists, it is weak and does not meet current complexity requirements.*
+### 💡 Strategic Recommendations
+1.  **Implement Encryption (Technical):** AES-256 encryption for all PII, SPII, and cardholder data.
+2.  **Access Control (Administrative/Technical):** Enforce the Principle of Least Privilege and Separation of Duties.
+3.  **Business Continuity (Administrative):** Develop a formal Disaster Recovery Plan and automated daily backups.
 
 ---
 
-## ⚖️ Compliance Checklist
+## 🇪🇸 Versión en Español
 
-### PCI DSS (Payment Card Industry Data Security Standard)
-* **Authorized access to credit card data:** No. (Currently, all employees have access).
-* **Secure internal environment for card data:** No. (Data is stored locally without encryption).
-* **Data encryption for transactions:** No.
-* **Secure password management policies:** No. (Nominal requirements only).
+### 📝 Resumen Ejecutivo
+Este informe contiene una auditoría de seguridad integral de **Botium Toys**. El objetivo ha sido evaluar los activos, controles y la postura de cumplimiento de la organización frente a estándares y normativas del sector (PCI DSS, GDPR y SOC). Como resultado, se ha asignado una **puntuación de riesgo de 8/10** debido a deficiencias significativas en los controles técnicos y administrativos, especialmente en el cifrado de datos, la gestión de accesos y la recuperación ante desastres.
 
-### GDPR (General Data Protection Regulation)
-* **E.U. customers' data privacy:** No. (Lack of access controls and encryption).
-* **Breach notification plan (72 hours):** **Yes.** (Established and enforced).
-* **Data classification and inventory:** No. (Inadequate asset management).
-* **Privacy policies and procedures:** **Yes.** (Developed and documented).
+### 🔍 Alcance y Objetivos de la Auditoría
+* **Alcance:** Todo el programa de seguridad, incluyendo equipos de empleados, redes internas, sistemas locales y el almacén logístico.
+* **Objetivos:** Evaluar los activos, completar una lista de verificación de controles y normativas, e identificar las medidas necesarias para mejorar la postura de seguridad.
 
-### SOC (System and Organizations Controls)
-* **User access policies established:** No.
-* **Confidentiality of PII/SPII:** No.
-* **Data Integrity:** **Yes.** (Integrated controls in place).
-* **Data Availability:** **Yes.** (Ensured by IT department).
+### 📊 Lista de Verificación de Controles
+| Control | ¿Implementado? | Categoría | Tipo |
+| :--- | :---: | :--- | :--- |
+| **Principio de Mínimo Privilegio** | No | Administrativo | Preventivo |
+| **Plan de Recuperación de Desastres** | No | Administrativo | Correctivo |
+| **Políticas de Contraseñas** | Sí* | Administrativo | Preventivo |
+| **Cortafuegos (Firewall) y Antivirus** | **Sí** | Técnico | Preventivo |
+| **Sistema de Detección de Intrusos (IDS)**| No | Técnico | Detectivo |
+| **Copias de Seguridad y Cifrado** | No | Técnico | Correctivo/Disuasorio |
+| **Seguridad Física (Cerraduras, CCTV)** | **Sí** | Físico | Preventivo/Detectivo |
+*\*Nota: La política de contraseñas actual es débil y no cumple los estándares modernos.*
 
----
-
-## 💡 Strategic Recommendations
-
-To reduce the risk score from 8 to a manageable level, I recommend the following priority actions:
-
-1.  **Implement Encryption (Technical):** Immediately implement AES-256 encryption for all PII, SPII, and cardholder data, both at rest and in transit.
-2.  **Access Control (Administrative/Technical):** Enforce the **Principle of Least Privilege** and **Separation of Duties**. Restrict database access to only authorized personnel.
-3.  **Password Management (Technical):** Deploy a centralized password management system and update the policy to require a minimum of 12 characters, including special characters and numbers.
-4.  **Business Continuity (Administrative):** Develop a formal **Disaster Recovery Plan** and implement a daily automated backup schedule for all critical data.
-5.  **Network Monitoring (Technical):** Install an **Intrusion Detection System (IDS)** to monitor anomalous traffic and improve detective capabilities.
-6.  **Legacy Systems:** Create a formal, regular schedule for the maintenance and intervention of end-of-life systems.
+### 💡 Recomendaciones Estratégicas
+1.  **Implementar Cifrado (Técnico):** Cifrado AES-256 para toda la información personal (PII/SPII) y datos de tarjetas bancarias.
+2.  **Control de Accesos (Administrativo/Técnico):** Aplicar el Principio de Mínimo Privilegio y la Separación de Funciones.
+3.  **Continuidad de Negocio (Administrativo):** Desarrollar un Plan de Recuperación ante Desastres (DRP) formal y copias de seguridad automáticas diarias.
 
 ---
 **Auditor:** Alfonso Raigada  
